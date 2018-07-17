@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Form = styled.div`
+export const FormMain = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -81,6 +81,14 @@ export const FieldLabelPassword = styled.span`
   background-image: url('./img/padlock-unlock.svg');
   background-size: cover;
   opacity: 0.4;
+`;
+
+export const StyledInput = styled.input`
+  width: calc(100% - 62px);
+  margin: 10px 0;
+  padding: 16px 6px 16px 53px;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 7px;
 `;
 
 export const MainButton = styled.button`
