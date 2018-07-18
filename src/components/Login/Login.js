@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import {
   FormMain,
   FormWrapper,
@@ -9,40 +10,65 @@ import {
   MainButton
 } from './Style';
 import { Field, Form } from 'react-final-form';
+import {
+  loginRequest,
+  registrationRequest,
+  getIsLoginError,
+  getIsRegistrationError
+} from '../../ducks/auth';
 import Particles from 'react-particles-js';
 import ParticlesParams from '../../particles-params';
 import logo from './img/Logo.svg';
 import userShape from './img/user-shape.svg';
 import padlock from './img/padlock-unlock.svg';
 
+const mapStateToProps = state => ({
+  isLoginError: getIsLoginError(state),
+  isRegistrationError: getIsRegistrationError(state)
+});
+
+const mapDispatchToProps = { loginRequest, registrationRequest };
+
 class Login extends Component {
   state = {
     type: 'login'
   };
 
-  handleSubmit = () => {};
+  handleSubmit = values => {
+    console.log(values);
+    const { action } = this.state;
+    const {
+      email: { value: email },
+      password: { value: password }
+    } = values.target;
+
+    if (action === 'login') {
+      this.props.loginRequest({ email, password });
+    } else {
+      this.props.registrationRequest({ email, password });
+    }
+  };
 
   changeAction = event => {
     event.preventDefault();
-    const action = this.state.action === 'login' ? 'registration' : 'login';
-    this.setState((state) => ({
-      type: action 
+    const action = this.state.type === 'login' ? 'registration' : 'login';
+    this.setState(state => ({
+      type: action
     }));
   };
 
   render() {
-    const { initialValues } = this.state;
+    const { type } = this.state;
     return (
       <Form
-        initialValues={initialValues}
         onSubmit={this.handleSubmit}
-        render={() => (
+        render={({ handleSubmit }) => (
           <Fragment>
             <FormMain>
               <FormWrapper>
                 <img src={logo} alt="lofttrade-logo" />
                 <div>
-                  <FormFields>
+                  <FormFields onSubmit={handleSubmit}>
                     <FieldWrapper>
                       <FieldLabel src={userShape} />
                       <Field
@@ -61,12 +87,19 @@ class Login extends Component {
                         component={props => <StyledInput {...props} />}
                       />
                     </FieldWrapper>
-                    <MainButton>Войти</MainButton>
+                    <MainButton type="submit">
+                      {type === 'login' ? 'Войти? ' : 'Зарегистрироваться'}
+                    </MainButton>
                   </FormFields>
                 </div>
                 <div>
                   <p>
-                    Впервые на сайте? <a href="/" onClick={this.changeAction}>Регистрация</a>
+                    {type === 'login'
+                      ? 'Впервые на сайте? '
+                      : 'Уже зарегистрированы? '}
+                    <a href="/" onClick={this.changeAction}>
+                      {type === 'login' ? 'Регистрация' : 'Войти'}
+                    </a>
                   </p>
                 </div>
               </FormWrapper>
@@ -79,4 +112,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
