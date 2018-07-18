@@ -12,19 +12,20 @@ export const FormMain = styled.div`
 export const FormWrapper = styled.div`
   position: absolute; 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 440px;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   z-index: 1;
 
-  img {
+  > img {
     width: 300px;
     height: 144px;
   }
 
-  div {
+  > div {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -61,25 +62,12 @@ export const FieldWrapper = styled.div`
   position: relative;
 `;
 
-export const FieldLabelEmail = styled.span`
+export const FieldLabel = styled.img`
   position: absolute;
   top: 25px;
   left: 21px;
   width: 19px;
   height: 19px;
-  background-image: url('./img/user-shape.svg');
-  background-size: cover;
-  opacity: 0.4;
-`;
-
-export const FieldLabelPassword = styled.span`
-  position: absolute;
-  top: 25px;
-  left: 21px;
-  width: 19px;
-  height: 19px;
-  background-image: url('./img/padlock-unlock.svg');
-  background-size: cover;
   opacity: 0.4;
 `;
 
