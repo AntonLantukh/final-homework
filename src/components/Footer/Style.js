@@ -21,7 +21,7 @@ export const FooterWrapper = styled.div`
 `;
 
 export const FooterParagraph = styled.p`
-  width: 230px;
+  width: 235px;
   line-height: 1.4;
 `;
 

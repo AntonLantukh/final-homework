@@ -15,10 +15,10 @@ export default class Footer extends Component {
         <FooterWrapper>
           <FooterParagraph>
             Сделано с любовью и старанием на курсе "React.js" в{' '}
-            <FooterLink>Loftschool</FooterLink>
-            Автор работы: <b>Кистанов Дмитрий</b>.
-            <FooterLogo src={logo} alt="logo" />
+            <FooterLink>Loftschool</FooterLink>.<br /> Автор работы:{' '}
+            <b>Кистанов Дмитрий</b>.
           </FooterParagraph>
+          <FooterLogo src={logo} alt="logo" />
         </FooterWrapper>
       </FooterMain>
     );
