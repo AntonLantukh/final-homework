@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import Login from '../Login';
-import Profile from '../Profile';
+import Platform from '../Platform';
 import PrivateRoute from '../PrivateRoute';
 import styled from 'styled-components';
 
@@ -11,8 +11,8 @@ class AppRouter extends PureComponent {
       <App>
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" render={() => <Redirect to="/profile" />} />
-          <PrivateRoute path="/profile" component={Profile} />
+          <Route exact path="/" render={() => <Redirect to="/platform" />} />
+          <PrivateRoute path="/platform" component={Platform} />
           <Redirect to="/login" />
         </Switch>
       </App>

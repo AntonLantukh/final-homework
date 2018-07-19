@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileMain = styled.main`
+export const PlatformMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@ export const ProfileMain = styled.main`
   background-color: rgb(242, 243, 245);
 `;
 
-export const ProfileWrapper = styled.div`
+export const PlatformWrapper = styled.div`
   width: 1200px;
   padding-top: 10px;
 
@@ -19,3 +19,11 @@ export const ProfileWrapper = styled.div`
     height: 100px;
   }
 `;
+
+export const PlatformCenter = styled.article`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+`
