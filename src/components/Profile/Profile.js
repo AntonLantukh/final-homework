@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
+import { ProfileMain, ProfileWrapper } from './Style';
 
 export default class Profile extends PureComponent {
   render() {
-    return <p>You are in the App</p>;
+    return (
+      <ProfileMain>
+        <ProfileWrapper />
+      </ProfileMain>
+    );
   }
 }

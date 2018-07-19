@@ -12,7 +12,7 @@ class PrivateRoute extends PureComponent {
         isAuthorized={isAuthorized}
         {...rest}
         render={props =>
-          isAuthorized ? <PureComponent {...props} /> : <Redirect to="/" />
+          isAuthorized ? <PureComponent {...props} /> : <Redirect to="/login" />
         }
       />
     );

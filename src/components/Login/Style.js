@@ -90,3 +90,7 @@ export const MainButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const Warning = styled.p`
+  color: rgb(255, 0, 0);
+`;

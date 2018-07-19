@@ -12,15 +12,15 @@ export default function* loginFlow() {
   while (true) {
     const isAuthorized = yield select(getIsAuthorized);
     const localStorageToken = yield call(getTokenFromLocalStorage);
-    let token;
+    let response;
     if (!isAuthorized && localStorageToken) {
-      token = localStorageToken;
+      response = localStorageToken;
       yield put(loginSuccess());
     } else {
       try {
         const action = yield take(loginRequest);
-        const { user, password } = action.payload;
-        token = yield call(login, user, password);
+        response = yield call(login, action.payload);
+        const token = response.data.jwt;
         yield call(setTokenApi, token);
         yield call(setTokenToLocalStorage, token);
         yield put(loginSuccess());

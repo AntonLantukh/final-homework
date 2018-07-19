@@ -10,7 +10,9 @@ import {
 import {
   getIsAuthorized,
   getIsRegistrationError,
-  getIsLoginError
+  getIsLoginError,
+  loginError,
+  registrationError
 } from './selector';
 
 export {
@@ -23,5 +25,7 @@ export {
   registrationFailure,
   getIsAuthorized,
   getIsRegistrationError,
-  getIsLoginError
+  getIsLoginError,
+  loginError,
+  registrationError
 };

@@ -11,8 +11,8 @@ import {
 
 const isAuthorized = handleActions(
   {
-    [loginSuccess]: (_state, action) => action.payload,
-    [registrationSuccess]: (_state, action) => action.payload
+    [loginSuccess]: (_state, action) => true,
+    [registrationSuccess]: (_state, action) => true
   },
   false
 );

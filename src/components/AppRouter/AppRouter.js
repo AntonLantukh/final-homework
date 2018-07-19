@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import Login from '../Login';
-import Profile from '../Login';
+import Profile from '../Profile';
 import PrivateRoute from '../PrivateRoute';
 import styled from 'styled-components';
 
-export class AppRouter extends PureComponent {
+class AppRouter extends PureComponent {
   render() {
     return (
       <App>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/" render={() => <Redirect to="/profile" />} />
           <PrivateRoute path="/profile" component={Profile} />
-          <Redirect to="/" />
+          <Redirect to="/login" />
         </Switch>
       </App>
     );

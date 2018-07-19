@@ -11,14 +11,15 @@ import { registration, setTokenApi } from '../api';
 export default function* registrationFlow() {
   while (true) {
     try {
-      const { user, password } = yield take(registrationRequest);
-      const token = yield call(registration, user, password);
+      const action = yield take(registrationRequest);
+      const response = yield call(registration, action.payload);
+      const token = response.data.jwt;
       yield call(setTokenApi, token);
       yield call(setTokenToLocalStorage, token);
       yield put(registrationSuccess());
       yield put(loginSuccess());
     } catch (error) {
-      const { message } = error.data;
+      const message = error.data.message;
       yield put(registrationFailure(message));
     }
   }

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   FormMain,
@@ -7,14 +8,18 @@ import {
   FieldWrapper,
   FieldLabel,
   StyledInput,
-  MainButton
+  MainButton,
+  Warning
 } from './Style';
 import { Field, Form } from 'react-final-form';
 import {
   loginRequest,
   registrationRequest,
   getIsLoginError,
-  getIsRegistrationError
+  getIsRegistrationError,
+  loginError,
+  registrationError,
+  getIsAuthorized
 } from '../../ducks/auth';
 import Particles from 'react-particles-js';
 import ParticlesParams from '../../particles-params';
@@ -23,11 +28,18 @@ import userShape from './img/user-shape.svg';
 import padlock from './img/padlock-unlock.svg';
 
 const mapStateToProps = state => ({
+  isAuthorized: getIsAuthorized(state),
   isLoginError: getIsLoginError(state),
-  isRegistrationError: getIsRegistrationError(state)
+  isRegistrationError: getIsRegistrationError(state),
+  loginError: loginError(state),
+  registrationError: registrationError(state)
 });
 
 const mapDispatchToProps = { loginRequest, registrationRequest };
+
+const Input = ({ input, placeholder }) => {
+  return <StyledInput {...input} placeholder={placeholder} />;
+};
 
 class Login extends Component {
   state = {
@@ -35,14 +47,9 @@ class Login extends Component {
   };
 
   handleSubmit = values => {
-    console.log(values);
-    const { action } = this.state;
-    const {
-      email: { value: email },
-      password: { value: password }
-    } = values.target;
-
-    if (action === 'login') {
+    const { type } = this.state;
+    const { email, password } = values;
+    if (type === 'login') {
       this.props.loginRequest({ email, password });
     } else {
       this.props.registrationRequest({ email, password });
@@ -59,8 +66,21 @@ class Login extends Component {
 
   render() {
     const { type } = this.state;
+    const {
+      isLoginError,
+      isRegistrationError,
+      loginError,
+      registrationError,
+      isAuthorized
+    } = this.props;
+
+    if (isAuthorized) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Form
+        initialValues={{ email: '', password: '' }}
         onSubmit={this.handleSubmit}
         render={({ handleSubmit }) => (
           <Fragment>
@@ -75,7 +95,7 @@ class Login extends Component {
                         type="email"
                         name="email"
                         placeholder="email"
-                        component={props => <StyledInput {...props} />}
+                        component={Input}
                       />
                     </FieldWrapper>
                     <FieldWrapper>
@@ -84,12 +104,16 @@ class Login extends Component {
                         type="password"
                         name="password"
                         placeholder="password"
-                        component={props => <StyledInput {...props} />}
+                        component={Input}
                       />
                     </FieldWrapper>
                     <MainButton type="submit">
                       {type === 'login' ? 'Войти? ' : 'Зарегистрироваться'}
                     </MainButton>
+                    {isLoginError && <Warning>{loginError}</Warning>}
+                    {isRegistrationError && (
+                      <Warning>{registrationError}</Warning>
+                    )}
                   </FormFields>
                 </div>
                 <div>
