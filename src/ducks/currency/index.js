@@ -11,6 +11,7 @@ import {
 } from './action';
 
 import currency from './reducer';
+import { getOffset, getData, getIsDataLoading } from './selector';
 
 export {
   fetchBtcRequest,
@@ -22,5 +23,8 @@ export {
   selectBtc,
   selectEth,
   selectOffset,
-  currency
+  currency,
+  getOffset,
+  getData,
+  getIsDataLoading
 };

@@ -1,12 +1,30 @@
 import { LineChart } from 'react-easy-chart';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import {
   ChartMain,
   ChartWrapper,
   ChartButtons,
   ButtonActive,
-  Button
+  Button,
+  SpinnerWrapper
 } from './Style';
+import {
+  getOffset,
+  getData,
+  getIsDataLoading,
+  selectOffset
+} from '../../ducks/currency';
+import Spinner from 'react-svg-spinner';
+
+const mapStateToProps = state => ({
+  offset: getOffset(state),
+  flow: getData(state),
+  isLoading: getIsDataLoading(state)
+});
+
+const mapDispatchToProps = { selectOffset };
 
 const offsets = {
   '2h': '2ч',
@@ -16,9 +34,23 @@ const offsets = {
   '7d': '7д'
 };
 
-export default class Chart extends Component {
-  render() {
-    const { data, offset } = this.props;
+class Chart extends Component {
+  onSelectOffset = event => {
+    const { selectOffset } = this.props;
+    const frame = event.target.dataSet.id;
+    selectOffset(frame);
+  };
+
+  renderSpinner = () => {
+    return (
+      <SpinnerWrapper>
+        <Spinner size="64px" color="fuchsia" gap={5} />
+      </SpinnerWrapper>
+    );
+  };
+
+  renderGraph = () => {
+    const { flow, offset } = this.props;
     return (
       <ChartMain>
         <h2>Окно графика</h2>
@@ -61,18 +93,28 @@ export default class Chart extends Component {
               }
             }}
             data={[
-              sell.map(([date, value]) => ({
-                x: moment(date).format('DD-MM HH:mm'),
-                y: value
+              flow.map(({ mts, purchase }) => ({
+                x: moment(mts).format('DD-MM HH:mm'),
+                y: purchase
               })),
-              purchase.map(([date, value]) => ({
-                x: moment(date).format('DD-MM HH:mm'),
-                y: value
+              flow.map(({ mts, sell }) => ({
+                x: moment(mts).format('DD-MM HH:mm'),
+                y: sell
               }))
             ]}
           />
         </ChartWrapper>
       </ChartMain>
     );
+  };
+
+  render() {
+    const { isLoading } = this.props;
+    return <div>{isLoading ? this.renderSpinner() : this.renderGraph()}</div>;
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chart);

@@ -1,28 +1,88 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import {
   AccountContainer,
   AccountInput,
   AccountInteger,
   AccountFloat,
-  AccountCurrency
+  AccountCurrency,
+  SpinnerWrapper,
+  Error,
+  ErrorMessage
 } from './Style';
 
+import {
+  getCoins,
+  getIsLoading,
+  getWalletError,
+  getIsWalletErrorPresent
+} from '../../ducks/wallet';
+import Spinner from 'react-svg-spinner';
+
+const mapStateToProps = state => ({
+  isLoading: getIsLoading(state),
+  coins: getCoins(state),
+  isError: getIsWalletErrorPresent(state),
+  error: getWalletError(state)
+});
+
+const currencies = {
+  usd: '$',
+  btc: 'BTC',
+  eth: 'ETH'
+};
+
 class Account extends Component {
-  render() {
+  renderSpinner = () => {
+    return (
+      <SpinnerWrapper>
+        <Spinner size="64px" color="fuchsia" gap={5} />
+      </SpinnerWrapper>
+    );
+  };
+
+  renderWallet = () => {
+    const { coins, error, isError } = this.props;
+    const values = {
+      usd: coins.usd ? String(coins.usd).split('.') : 0,
+      btc: coins.btc ? String(coins.btc).split('.') : 0,
+      eth: coins.eth ? String(coins.eth).split('.') : 0
+    };
+
     return (
       <Fragment>
         <h2>Ваш счёт</h2>
+        {isError && (
+          <Error>
+            <ErrorMessage>{error}</ErrorMessage>
+          </Error>
+        )}
         <AccountContainer>
-          <AccountInput>
-            <AccountInteger>1000</AccountInteger>
-            .
-            <AccountFloat>12345</AccountFloat>
-          </AccountInput>
-          <AccountCurrency />
+          {Object.keys(currencies).map(element => (
+            <Fragment>
+              <AccountInput key={element}>
+                <AccountInteger>
+                  {values[element] ? values[element][0] : 0}
+                </AccountInteger>
+                .
+                <AccountFloat>
+                  {values[element] ? values[element][1] : 0}
+                </AccountFloat>
+              </AccountInput>
+              <AccountCurrency key={element}>
+                {currencies.element}
+              </AccountCurrency>
+            </Fragment>
+          ))}
         </AccountContainer>
       </Fragment>
     );
+  };
+
+  render() {
+    const { isLoading } = this.props;
+    return <div>{isLoading ? this.renderSpinner() : this.renderWallet()}</div>;
   }
 }
 
-export default Account;
+export default connect(mapStateToProps)(Account);

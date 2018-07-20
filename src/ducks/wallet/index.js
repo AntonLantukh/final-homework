@@ -11,6 +11,12 @@ import {
 } from './action';
 
 import wallet from './reducer';
+import {
+  getIsLoading,
+  getCoins,
+  getWalletError,
+  getIsWalletErrorPresent
+} from './selector';
 
 export {
   fetchWalletReguest,
@@ -22,5 +28,9 @@ export {
   sellCurrencyReguest,
   sellCurrencySucess,
   sellCurrencyFailure,
-  wallet
+  wallet,
+  getIsLoading,
+  getCoins,
+  getWalletError,
+  getIsWalletErrorPresent
 };

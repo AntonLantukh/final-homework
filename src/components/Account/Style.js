@@ -37,3 +37,22 @@ export const AccountFloat = styled.span`
   overflow: hidden;
   color: rgb(138, 138, 138);
 `;
+
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+`;
+
+export const Error = styled.div`
+  width: 400px;
+  text-align: center;
+  margin: 10px auto 10px;
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+`;
