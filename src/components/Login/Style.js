@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Container = styled.main`
+  height: 100vh;
+  background-color: rgb(245, 245, 246);
+`;
+
 export const FormMain = styled.div`
   position: absolute;
   display: flex;

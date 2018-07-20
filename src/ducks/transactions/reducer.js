@@ -1,14 +1,14 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  fetchUserTransactionsReguest,
+  fetchUserTransactionsRequest,
   fetchUserTransactionsSuccess,
   fetchUserTransactionsFailure
 } from './action';
 
 const isLoading = handleActions(
   {
-    [fetchUserTransactionsReguest]: (_state, action) => true,
+    [fetchUserTransactionsRequest]: (_state, action) => true,
     [fetchUserTransactionsSuccess]: (_state, action) => false,
     [fetchUserTransactionsFailure]: (_state, action) => false
   },

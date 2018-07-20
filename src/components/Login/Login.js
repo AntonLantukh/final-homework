@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
@@ -9,7 +9,8 @@ import {
   FieldLabel,
   StyledInput,
   MainButton,
-  Warning
+  Warning,
+  Container
 } from './Style';
 import { Field, Form } from 'react-final-form';
 import {
@@ -83,7 +84,7 @@ class Login extends Component {
         initialValues={{ email: '', password: '' }}
         onSubmit={this.handleSubmit}
         render={({ handleSubmit }) => (
-          <Fragment>
+          <Container>
             <FormMain>
               <FormWrapper>
                 <img src={logo} alt="lofttrade-logo" />
@@ -129,7 +130,7 @@ class Login extends Component {
               </FormWrapper>
             </FormMain>
             <Particles params={ParticlesParams} />
-          </Fragment>
+          </Container>
         )}
       />
     );

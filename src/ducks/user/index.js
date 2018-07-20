@@ -4,6 +4,6 @@ import {
   getUserInfoFailure
 } from './action';
 
-import user from './user';
+import user from './reducer';
 
 export { getUserInfoReguest, getUserInfoSucess, getUserInfoFailure, user };

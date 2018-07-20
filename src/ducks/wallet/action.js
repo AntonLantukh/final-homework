@@ -1,13 +1,13 @@
 import { createActions } from 'redux-actions';
 
 export const {
-  fetchWalletReguest,
+  fetchWalletRequest,
   fetchWalletSuccess,
   fetchWalletFailure,
-  buyCurrencyReguest,
+  buyCurrencyRequest,
   buyCurrencySucess,
   buyCurrencyFailure,
-  sellCurrencyReguest,
+  sellCurrencyRequest,
   sellCurrencySucess,
   sellCurrencyFailure
 } = createActions(

@@ -1,20 +1,20 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  fetchWalletReguest,
+  fetchWalletRequest,
   fetchWalletSuccess,
   fetchWalletFailure,
-  buyCurrencyReguest,
+  buyCurrencyRequest,
   buyCurrencySucess,
   buyCurrencyFailure,
-  sellCurrencyReguest,
+  sellCurrencyRequest,
   sellCurrencySucess,
   sellCurrencyFailure
 } from './action';
 
 const isLoading = handleActions(
   {
-    [fetchWalletReguest]: (_state, action) => true,
+    [fetchWalletRequest]: (_state, action) => true,
     [fetchWalletSuccess]: (_state, action) => false,
     [fetchWalletFailure]: (_state, action) => false
   },
@@ -31,8 +31,8 @@ const coins = handleActions(
 
 const error = handleActions(
   {
-    [sellCurrencyReguest]: (_state, action) => null,
-    [buyCurrencyReguest]: (_state, action) => null,
+    [sellCurrencyRequest]: (_state, action) => null,
+    [buyCurrencyRequest]: (_state, action) => null,
     [buyCurrencyFailure]: (_state, action) => action.payload,
     [sellCurrencyFailure]: (_state, action) => action.payload
   },

@@ -1,11 +1,11 @@
 import {
-  fetchWalletReguest,
+  fetchWalletRequest,
   fetchWalletSuccess,
   fetchWalletFailure,
-  buyCurrencyReguest,
+  buyCurrencyRequest,
   buyCurrencySucess,
   buyCurrencyFailure,
-  sellCurrencyReguest,
+  sellCurrencyRequest,
   sellCurrencySucess,
   sellCurrencyFailure
 } from './action';
@@ -19,13 +19,13 @@ import {
 } from './selector';
 
 export {
-  fetchWalletReguest,
+  fetchWalletRequest,
   fetchWalletSuccess,
   fetchWalletFailure,
-  buyCurrencyReguest,
+  buyCurrencyRequest,
   buyCurrencySucess,
   buyCurrencyFailure,
-  sellCurrencyReguest,
+  sellCurrencyRequest,
   sellCurrencySucess,
   sellCurrencyFailure,
   wallet,

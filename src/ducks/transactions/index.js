@@ -1,14 +1,18 @@
 import {
-  fetchUserTransactionsReguest,
+  fetchUserTransactionsRequest,
   fetchUserTransactionsSuccess,
-  fetchUserTransactionsFailure
+  fetchUserTransactionsFailure,
+  getIsRecordLoading,
+  getRecords
 } from './action';
 
 import transactions from './reducer';
 
 export {
-  fetchUserTransactionsReguest,
+  fetchUserTransactionsRequest,
   fetchUserTransactionsSuccess,
   fetchUserTransactionsFailure,
-  transactions
+  transactions,
+  getIsRecordLoading,
+  getRecords
 };
