@@ -4,6 +4,7 @@ export const {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logout,
   registrationRequest,
   registrationSuccess,
   registrationFailure
@@ -11,6 +12,7 @@ export const {
   'LOGIN_REQUEST',
   'LOGIN_SUCCESS',
   'LOGIN_FAILURE',
+  'LOGOUT',
   'REGISTRATION_REQUEST',
   'REGISTRATION_SUCCESS',
   'REGISTRATION_FAILURE'

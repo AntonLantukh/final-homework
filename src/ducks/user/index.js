@@ -5,5 +5,12 @@ import {
 } from './action';
 
 import user from './reducer';
+import { getUser } from './selector';
 
-export { getUserInfoReguest, getUserInfoSucess, getUserInfoFailure, user };
+export {
+  getUserInfoReguest,
+  getUserInfoSucess,
+  getUserInfoFailure,
+  user,
+  getUser
+};

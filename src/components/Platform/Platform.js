@@ -5,29 +5,27 @@ import Account from '../Account';
 import TradeOperations from '../TradeOperations';
 import Chart from '../Chart';
 import Balance from '../Balance';
-import {
-  selectBtc,
-  selectEth
-} from '../../ducks/currency';
+import { selectBtc, selectEth } from '../../ducks/currency';
 
-import {
-  fetchWalletRequest
-} from '../../ducks/wallet';
+import { fetchWalletRequest } from '../../ducks/wallet';
 
-import {
-  fetchUserTransactionsRequest
-} from '../../ducks/transactions';
+import { fetchUserTransactionsRequest } from '../../ducks/transactions';
 
-const mapStateToProps = state => ({
- // offset: getOffset(state),
- // flow: getData(state),
-  // isLoading: getIsDataLoading(state)
-});
+//const mapStateToProps = state => ({
+// offset: getOffset(state),
+// flow: getData(state),
+// isLoading: getIsDataLoading(state)
+//});
 
-const mapDispatchToProps = { fetchWalletRequest, fetchUserTransactionsRequest, selectEth, selectBtc};
+const mapDispatchToProps = {
+  fetchWalletRequest,
+  fetchUserTransactionsRequest,
+  selectEth,
+  selectBtc
+};
 
 class Platform extends PureComponent {
-  componentDidMount () {
+  componentDidMount() {
     const match = this.props.match;
     if (match && match.params.name === 'eth') {
       this.props.selectEth();
@@ -36,7 +34,7 @@ class Platform extends PureComponent {
     }
     this.props.fetchWalletRequest();
     this.props.fetchUserTransactionsRequest();
-}
+  }
 
   render() {
     return (
@@ -54,8 +52,4 @@ class Platform extends PureComponent {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Platform);
-
+export default connect(mapDispatchToProps)(Platform);

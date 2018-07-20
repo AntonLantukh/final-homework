@@ -4,6 +4,7 @@ import {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logout,
   registrationRequest,
   registrationSuccess,
   registrationFailure
@@ -12,6 +13,7 @@ import {
 const isAuthorized = handleActions(
   {
     [loginSuccess]: (_state, action) => true,
+    [logout]: (_state, action) => false,
     [registrationSuccess]: (_state, action) => true
   },
   false

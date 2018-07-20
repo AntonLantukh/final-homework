@@ -3,6 +3,7 @@ import {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logout,
   registrationRequest,
   registrationSuccess,
   registrationFailure
@@ -20,6 +21,7 @@ export {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logout,
   registrationRequest,
   registrationSuccess,
   registrationFailure,
