@@ -11,7 +11,7 @@ export default class Application extends PureComponent {
         <Header />
         <ApplicationMain>
           <ApplicationWrapper>
-            <Platform />
+            <Platform match={this.props.match} />
           </ApplicationWrapper>
         </ApplicationMain>
         <Footer />

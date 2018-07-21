@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import {
   BalanceTable,
@@ -44,16 +45,28 @@ class Balance extends Component {
             </BalanceTableHeader>
           </thead>
           <tbody>
-            {records.map(item => (
-              <BalanceTableTr key={item.id}>
-                <BalanceTableTd>
-                  {item.usd_delta < 0 ? 'Покупка' : 'Продажа'}
-                </BalanceTableTd>
-                <BalanceTableTd>item.createdAt</BalanceTableTd>
-                <BalanceTableTd>{item[`${currency}_delta`]}</BalanceTableTd>
-                <BalanceTableTd>{item.usd_delta}</BalanceTableTd>
-              </BalanceTableTr>
-            ))}
+            {records.map(
+              item =>
+                item[`${currency}_delta`] === item[`currency_delta`] ? (
+                  <BalanceTableTr key={item.id}>
+                    <BalanceTableTd>
+                      {item.usd_delta < 0 ? 'Покупка' : 'Продажа'}
+                    </BalanceTableTd>
+                    <BalanceTableTd>
+                      {moment(
+                        item.created_at,
+                        'YYYY-MM-DDTHH:mm:ss.SSSZ'
+                      ).format('DD.MM.YYYY HH:mm')}
+                    </BalanceTableTd>
+                    <BalanceTableTd>{item[`${currency}_delta`]}</BalanceTableTd>
+                    <BalanceTableTd>
+                      {item['usd_delta'] && item['usd_delta'].toFixed(3)}
+                    </BalanceTableTd>
+                  </BalanceTableTr>
+                ) : (
+                  ''
+                )
+            )}
           </tbody>
         </BalanceTable>
       </article>

@@ -1,10 +1,10 @@
 import {
   fetchUserTransactionsRequest,
   fetchUserTransactionsSuccess,
-  fetchUserTransactionsFailure,
-  getIsRecordLoading,
-  getRecords
+  fetchUserTransactionsFailure
 } from './action';
+
+import { getIsRecordLoading, getRecords } from './selector';
 
 import transactions from './reducer';
 

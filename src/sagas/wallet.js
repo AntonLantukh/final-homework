@@ -9,7 +9,8 @@ import {
 function* fetchWalletFlow() {
   try {
     const response = yield call(getWallet);
-    yield put(fetchWalletSuccess(response.data.result));
+    const result = response.data.result;
+    yield put(fetchWalletSuccess(result));
   } catch (error) {
     yield put(fetchWalletFailure(error));
   }

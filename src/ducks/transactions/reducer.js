@@ -19,7 +19,7 @@ const records = handleActions(
   {
     [fetchUserTransactionsSuccess]: (_state, action) => action.payload
   },
-  '2h'
+  []
 );
 
 export default combineReducers({

@@ -1,5 +1,5 @@
 import {
-  getUserInfoReguest,
+  getUserInfoRequest,
   getUserInfoSucess,
   getUserInfoFailure
 } from './action';
@@ -8,7 +8,7 @@ import user from './reducer';
 import { getUser } from './selector';
 
 export {
-  getUserInfoReguest,
+  getUserInfoRequest,
   getUserInfoSucess,
   getUserInfoFailure,
   user,

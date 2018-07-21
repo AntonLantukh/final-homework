@@ -37,7 +37,7 @@ const offsets = {
 class Chart extends Component {
   onSelectOffset = event => {
     const { selectOffset } = this.props;
-    const frame = event.target.dataSet.id;
+    const frame = event.target.dataset.id;
     selectOffset(frame);
   };
 

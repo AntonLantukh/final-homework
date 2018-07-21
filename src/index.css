@@ -1,15 +1,23 @@
-html, body, #root {
-    height: 100%;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  p {
-    margin: 5px 0;
-  }
-  
-  *:focus {
-      outline: none;
-  }
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+button,
+input {
+  font-size: 18px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+*:focus {
+  outline: none;
+}

@@ -32,8 +32,13 @@ export const HeaderCurrencyWrapper = styled.div`
   margin: 0 8px;
   text-align: center;
   text-decoration: none;
-  cursor: auto;
+  cursor: pointer;
+  color: rgb(170, 170, 170);
+`;
+
+export const HeaderCurrencyWrapperActive = HeaderCurrencyWrapper.extend`
   color: rgb(255, 255, 255);
+  cursor: auto;
 `;
 
 export const HeaderLogo = styled.img`

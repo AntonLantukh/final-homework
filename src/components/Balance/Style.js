@@ -27,3 +27,12 @@ export const BalanceTableTd = styled.td`
   padding: 5px 10px;
   border: 1px solid rgb(237, 240, 241);
 `;
+
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+`;

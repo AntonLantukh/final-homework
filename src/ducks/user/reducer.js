@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  getUserInfoReguest,
+  getUserInfoRequest,
   getUserInfoSucess,
   getUserInfoFailure
 } from './action';
@@ -15,7 +15,7 @@ const info = handleActions(
 
 const isLoading = handleActions(
   {
-    [getUserInfoReguest]: (_state, action) => true,
+    [getUserInfoRequest]: (_state, action) => true,
     [getUserInfoSucess]: (_state, action) => false,
     [getUserInfoFailure]: (_state, action) => false
   },
@@ -25,7 +25,7 @@ const isLoading = handleActions(
 const error = handleActions(
   {
     [getUserInfoFailure]: (_state, action) => action.payload,
-    [getUserInfoReguest]: (_state, action) => null
+    [getUserInfoRequest]: (_state, action) => null
   },
   null
 );

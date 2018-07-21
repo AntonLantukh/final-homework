@@ -5,10 +5,10 @@ import {
   fetchWalletSuccess,
   fetchWalletFailure,
   buyCurrencyRequest,
-  buyCurrencySucess,
+  buyCurrencySuccess,
   buyCurrencyFailure,
   sellCurrencyRequest,
-  sellCurrencySucess,
+  sellCurrencySuccess,
   sellCurrencyFailure
 } from './action';
 
@@ -23,18 +23,21 @@ const isLoading = handleActions(
 
 const coins = handleActions(
   {
-    [buyCurrencySucess]: (_state, action) => action.payload,
-    [sellCurrencySucess]: (_state, action) => action.payload
+    [buyCurrencySuccess]: (_state, action) => action.payload,
+    [sellCurrencySuccess]: (_state, action) => action.payload,
+    [fetchWalletSuccess]: (_state, action) => action.payload
   },
-  {}
+  { usd: 0, btc: 0, eth: 0 }
 );
 
 const error = handleActions(
   {
+    [fetchWalletRequest]: (_state, action) => null,
     [sellCurrencyRequest]: (_state, action) => null,
     [buyCurrencyRequest]: (_state, action) => null,
     [buyCurrencyFailure]: (_state, action) => action.payload,
-    [sellCurrencyFailure]: (_state, action) => action.payload
+    [sellCurrencyFailure]: (_state, action) => action.payload,
+    [fetchWalletFailure]: (_state, action) => action.payload
   },
   null
 );

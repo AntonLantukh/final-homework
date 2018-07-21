@@ -148,7 +148,7 @@ class TradeOperations extends PureComponent {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             name="inputFiat"
-            value={inputFiat}
+            value={inputFiat ? inputFiat : ''}
           />
           <Currency>{selectedCurrency.toUpperCase()}</Currency>
         </InputWrapper>
@@ -159,7 +159,7 @@ class TradeOperations extends PureComponent {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               name="inputPurchase"
-              value={inputPurchase}
+              value={inputPurchase ? inputPurchase : ''}
             />
             <Currency>$</Currency>
           </InputWrapper>
@@ -172,7 +172,7 @@ class TradeOperations extends PureComponent {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               name="inputSell"
-              value={inputSell}
+              value={inputSell ? inputSell : ''}
             />
             <Currency>$</Currency>
           </InputWrapper>

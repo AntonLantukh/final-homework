@@ -1,11 +1,15 @@
 import { createActions } from 'redux-actions';
 
 export const {
-  fetchUserTransactionsRequest,
-  fetchUserTransactionsSuccess,
-  fetchUserTransactionsFailure
-} = createActions(
-  'FETCH_USER_TRANSACTIONS_REQUEST',
-  'FETCH_USER_TRANSACTIONS_SUCESS',
-  'FETCH_USER_TRANSACTIONS_FAILURE'
-);
+  transactions: {
+    fetchUserTransactionsRequest,
+    fetchUserTransactionsSuccess,
+    fetchUserTransactionsFailure
+  }
+} = createActions({
+  TRANSACTIONS: {
+    FETCH_USER_TRANSACTIONS_REQUEST: null,
+    FETCH_USER_TRANSACTIONS_SUCCESS: null,
+    FETCH_USER_TRANSACTIONS_FAILURE: null
+  }
+});

@@ -3,10 +3,10 @@ import {
   fetchWalletSuccess,
   fetchWalletFailure,
   buyCurrencyRequest,
-  buyCurrencySucess,
+  buyCurrencySuccess,
   buyCurrencyFailure,
   sellCurrencyRequest,
-  sellCurrencySucess,
+  sellCurrencySuccess,
   sellCurrencyFailure
 } from './action';
 
@@ -23,10 +23,10 @@ export {
   fetchWalletSuccess,
   fetchWalletFailure,
   buyCurrencyRequest,
-  buyCurrencySucess,
+  buyCurrencySuccess,
   buyCurrencyFailure,
   sellCurrencyRequest,
-  sellCurrencySucess,
+  sellCurrencySuccess,
   sellCurrencyFailure,
   wallet,
   getIsLoading,

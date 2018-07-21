@@ -6,6 +6,7 @@ import {
   HeaderWrapper,
   HeaderCurrency,
   HeaderCurrencyWrapper,
+  HeaderCurrencyWrapperActive,
   HeaderLogo
 } from './Style';
 import { connect } from 'react-redux';
@@ -33,11 +34,6 @@ const currencies = {
 };
 
 class Header extends Component {
-  onLinkHandler = element => {
-    const { selectBtc, selectEth } = this.props;
-    element === 'btc' ? selectBtc() : selectEth();
-  };
-
   render() {
     const {
       currencyBtcLast,
@@ -56,23 +52,21 @@ class Header extends Component {
           <HeaderLogo src={logo} alt="logo" />
           <HeaderCurrency>
             {Object.keys(currencies).map(
-              element =>
-                selectedCurrency === element ? (
-                  <Link
-                    to={`/trade/${element}`}
-                    key={element}
-                    onClick={this.onLinkHandler(element)}
-                  >
-                    <HeaderCurrencyWrapper>
-                      {values.element}
-                      <b>1 currencies.element</b>
-                    </HeaderCurrencyWrapper>
+              item =>
+                selectedCurrency === item ? (
+                  <Link to={`/platform/${item}`} key={item}>
+                    <HeaderCurrencyWrapperActive>
+                      {values[item]}
+                      <b>1 {currencies[item]}</b>
+                    </HeaderCurrencyWrapperActive>
                   </Link>
                 ) : (
-                  <HeaderCurrencyWrapper key={element}>
-                    {values.element}
-                    <b>1 currencies.element</b>
-                  </HeaderCurrencyWrapper>
+                  <Link to={`/platform/${item}`} key={item}>
+                    <HeaderCurrencyWrapper key={item}>
+                      {values[item]}
+                      <b>1 {currencies[item]}</b>
+                    </HeaderCurrencyWrapper>
+                  </Link>
                 )
             )}
           </HeaderCurrency>

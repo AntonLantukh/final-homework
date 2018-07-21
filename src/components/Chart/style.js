@@ -30,8 +30,8 @@ export const Button = styled.button`
 `;
 
 export const ButtonActive = Button.extend`
-  background-color: transparent;
-  color: rgb(106, 180, 221);
+  color: rgb(255, 255, 255);
+  background-color: rgb(106, 180, 221);
 `;
 
 export const SpinnerWrapper = styled.div`

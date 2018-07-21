@@ -57,24 +57,21 @@ class Account extends Component {
             <ErrorMessage>{error}</ErrorMessage>
           </Error>
         )}
-        <AccountContainer>
-          {Object.keys(currencies).map(element => (
-            <Fragment>
-              <AccountInput key={element}>
-                <AccountInteger>
-                  {values[element] ? values[element][0] : 0}
-                </AccountInteger>
-                .
-                <AccountFloat>
-                  {values[element] ? values[element][1] : 0}
-                </AccountFloat>
-              </AccountInput>
-              <AccountCurrency key={element}>
-                {currencies.element}
-              </AccountCurrency>
-            </Fragment>
-          ))}
-        </AccountContainer>
+
+        {Object.keys(currencies).map(element => (
+          <AccountContainer key={element}>
+            <AccountInput>
+              <AccountInteger>
+                {values[element][0] ? values[element][0] : 0}
+              </AccountInteger>
+              .
+              <AccountFloat>
+                {values[element][1] ? values[element][1] : 0}
+              </AccountFloat>
+            </AccountInput>
+            <AccountCurrency>{currencies[element]}</AccountCurrency>
+          </AccountContainer>
+        ))}
       </Fragment>
     );
   };

@@ -1,11 +1,11 @@
 import { createActions } from 'redux-actions';
 
 export const {
-  getUserInfoReguest,
-  getUserInfoSucess,
-  getUserInfoFailure
-} = createActions(
-  'GET_USER_INFO_REQUEST',
-  'GET_USER_INFO_SUCESS',
-  'GET_USER_INFO_FAILURE'
-);
+  user: { getUserInfoRequest, getUserInfoSucess, getUserInfoFailure }
+} = createActions({
+  USER: {
+    GET_USER_INFO_REQUEST: null,
+    GET_USER_INFO_SUCESS: null,
+    GET_USER_INFO_FAILURE: null
+  }
+});

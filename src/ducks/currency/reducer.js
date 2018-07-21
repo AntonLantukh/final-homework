@@ -15,7 +15,7 @@ import {
 const selected = handleActions(
   {
     [selectBtc]: (_state, action) => 'btc',
-    [selectEth]: (_state, action) => 'etc'
+    [selectEth]: (_state, action) => 'eth'
   },
   'btc'
 );

@@ -15,6 +15,7 @@ export default function* loginFlow() {
     let response;
     if (!isAuthorized && localStorageToken) {
       response = localStorageToken;
+      yield call(setTokenApi, response);
       yield put(loginSuccess());
     } else {
       try {
