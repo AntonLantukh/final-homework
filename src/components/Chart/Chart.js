@@ -1,5 +1,5 @@
 import { LineChart } from 'react-easy-chart';
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import {
@@ -34,7 +34,7 @@ const offsets = {
   '7d': '7д'
 };
 
-class Chart extends Component {
+class Chart extends PureComponent {
   onSelectOffset = event => {
     const { selectOffset } = this.props;
     const frame = event.target.dataset.id;
@@ -50,7 +50,41 @@ class Chart extends Component {
   };
 
   renderGraph = () => {
-    const { flow, offset } = this.props;
+    const { flow } = this.props;
+    return (
+      <Fragment>
+        <LineChart
+          lineColors={['blue', 'red']}
+          axes
+          grid
+          verticalGrid
+          interpolate={'cardinal'}
+          xType={'time'}
+          datePattern={'%d-%m %H:%M'}
+          width={750}
+          height={400}
+          style={{
+            '.axis path': {
+              stroke: '#EDF0F1'
+            }
+          }}
+          data={[
+            flow.map(({ mts, purchase }) => ({
+              x: moment(mts).format('DD-MM HH:mm'),
+              y: purchase
+            })),
+            flow.map(({ mts, sell }) => ({
+              x: moment(mts).format('DD-MM HH:mm'),
+              y: sell
+            }))
+          ]}
+        />
+      </Fragment>
+    );
+  };
+
+  render() {
+    const { isLoading, offset } = this.props;
     return (
       <ChartMain>
         <h2>Окно графика</h2>
@@ -77,40 +111,10 @@ class Chart extends Component {
                 )
             )}
           </ChartButtons>
-          <LineChart
-            lineColors={['blue', 'red']}
-            axes
-            grid
-            verticalGrid
-            interpolate={'cardinal'}
-            xType={'time'}
-            datePattern={'%d-%m %H:%M'}
-            width={750}
-            height={400}
-            style={{
-              '.axis path': {
-                stroke: '#EDF0F1'
-              }
-            }}
-            data={[
-              flow.map(({ mts, purchase }) => ({
-                x: moment(mts).format('DD-MM HH:mm'),
-                y: purchase
-              })),
-              flow.map(({ mts, sell }) => ({
-                x: moment(mts).format('DD-MM HH:mm'),
-                y: sell
-              }))
-            ]}
-          />
+          {isLoading ? this.renderSpinner() : this.renderGraph()}
         </ChartWrapper>
       </ChartMain>
     );
-  };
-
-  render() {
-    const { isLoading } = this.props;
-    return <div>{isLoading ? this.renderSpinner() : this.renderGraph()}</div>;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './img/Logo-white.svg';
 import {
@@ -33,7 +33,7 @@ const currencies = {
   eth: 'ETH'
 };
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
     const {
       currencyBtcLast,

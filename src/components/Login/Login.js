@@ -42,7 +42,7 @@ const Input = ({ input, placeholder }) => {
   return <StyledInput {...input} placeholder={placeholder} />;
 };
 
-class Login extends Component {
+export class Login extends Component {
   state = {
     type: 'login'
   };

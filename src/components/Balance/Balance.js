@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import {
   BalanceTable,
@@ -20,7 +19,7 @@ const mapStateToProps = state => ({
   currency: getCurrency(state)
 });
 
-class Balance extends Component {
+class Balance extends PureComponent {
   renderSpinner = () => {
     return (
       <SpinnerWrapper>
@@ -32,50 +31,45 @@ class Balance extends Component {
   renderBalance = () => {
     const { currency, records } = this.props;
     return (
-      <article>
-        <BalanceTable>
-          <thead>
-            <BalanceTableHeader>
-              <BalanceTableTh>Операция</BalanceTableTh>
-              <BalanceTableTh>Дата</BalanceTableTh>
-              <BalanceTableTh>
-                {currency === 'btc' ? 'BTC' : 'ETH'}
-              </BalanceTableTh>
-              <BalanceTableTh>USD</BalanceTableTh>
-            </BalanceTableHeader>
-          </thead>
-          <tbody>
-            {records.map(
-              item =>
-                item[`${currency}_delta`] === item[`currency_delta`] ? (
-                  <BalanceTableTr key={item.id}>
-                    <BalanceTableTd>
-                      {item.usd_delta < 0 ? 'Покупка' : 'Продажа'}
-                    </BalanceTableTd>
-                    <BalanceTableTd>
-                      {moment(
-                        item.created_at,
-                        'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                      ).format('DD.MM.YYYY HH:mm')}
-                    </BalanceTableTd>
-                    <BalanceTableTd>{item[`${currency}_delta`]}</BalanceTableTd>
-                    <BalanceTableTd>
-                      {item['usd_delta'] && item['usd_delta'].toFixed(3)}
-                    </BalanceTableTd>
-                  </BalanceTableTr>
-                ) : (
-                  ''
-                )
-            )}
-          </tbody>
-        </BalanceTable>
-      </article>
+      <BalanceTable>
+        <thead>
+          <BalanceTableHeader>
+            <BalanceTableTh>Операция</BalanceTableTh>
+            <BalanceTableTh>Дата</BalanceTableTh>
+            <BalanceTableTh>
+              {currency === 'btc' ? 'BTC' : 'ETH'}
+            </BalanceTableTh>
+            <BalanceTableTh>USD</BalanceTableTh>
+          </BalanceTableHeader>
+        </thead>
+        <tbody>
+          {records.map(
+            item =>
+              item[currency] ? (
+                <BalanceTableTr key={item.id}>
+                  <BalanceTableTd>
+                    {item.usd < 0 ? 'Покупка' : 'Продажа'}
+                  </BalanceTableTd>
+                  <BalanceTableTd>{item.date}</BalanceTableTd>
+                  <BalanceTableTd>{item[currency]}</BalanceTableTd>
+                  <BalanceTableTd>{item.usd}</BalanceTableTd>
+                </BalanceTableTr>
+              ) : (
+                <Fragment key={item.id} />
+              )
+          )}
+        </tbody>
+      </BalanceTable>
     );
   };
 
   render() {
     const { isLoading } = this.props;
-    return <div>{isLoading ? this.renderSpinner() : this.renderBalance()}</div>;
+    return (
+      <article>
+        {isLoading ? this.renderSpinner() : this.renderBalance()}{' '}
+      </article>
+    );
   }
 }
 

@@ -8,10 +8,14 @@ import Balance from '../Balance';
 import { selectBtc, selectEth, getOffset } from '../../ducks/currency';
 import { fetchWalletRequest } from '../../ducks/wallet';
 import { getUserInfoRequest } from '../../ducks/user';
-import { fetchUserTransactionsRequest } from '../../ducks/transactions';
+import {
+  fetchUserTransactionsRequest,
+  getRecords
+} from '../../ducks/transactions';
 
 const mapStateToProps = state => ({
-  offset: getOffset(state)
+  offset: getOffset(state),
+  records: getRecords(state)
 });
 
 const mapDispatchToProps = {
@@ -35,12 +39,15 @@ class Platform extends PureComponent {
     }
   }
 
-  componentDidUpdate() {
-    const match = this.props.match;
-    if (match && match.params.name === 'eth') {
-      this.props.selectEth();
-    } else {
-      this.props.selectBtc();
+  componentDidUpdate(prevProps) {
+    const prevMatch = prevProps.match.params.name;
+    const newMatch = this.props.match.params.name;
+    if (prevMatch !== newMatch && newMatch) {
+      if (newMatch === 'eth') {
+        this.props.selectEth();
+      } else {
+        this.props.selectBtc();
+      }
     }
   }
 

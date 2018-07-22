@@ -8,14 +8,17 @@ import {
   sellCurrencySuccess,
   sellCurrencyFailure
 } from '../ducks/wallet';
+import { fetchWalletRequest } from '../ducks/wallet';
+import { fetchUserTransactionsRequest } from '../ducks/transactions';
 
 function* fetchBuyRequest(action) {
   try {
     const { selectedCurrency: currency, value } = action.payload;
-    console.log(currency, value);
     const response = yield call(buyCurrency, currency, value);
     const result = response.data.result;
     yield put(buyCurrencySuccess(result));
+    yield put(fetchWalletRequest());
+    yield put(fetchUserTransactionsRequest());
   } catch (error) {
     yield put(buyCurrencyFailure(error));
   }
@@ -25,9 +28,10 @@ function* fetchSellRequest(action) {
   try {
     const { selectedCurrency: currency, value } = action.payload;
     const response = yield call(sellCurrency, currency, value);
-    console.log(response);
     const result = response.data.result;
     yield put(sellCurrencySuccess(result));
+    yield put(fetchWalletRequest());
+    yield put(fetchUserTransactionsRequest());
   } catch (error) {
     yield put(sellCurrencyFailure(error));
   }

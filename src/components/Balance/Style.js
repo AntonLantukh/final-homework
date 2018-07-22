@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const BalanceTable = styled.table`
   width: 100%;
+  min-height: 32px;
   margin: 40px 0;
   text-align: right;
   border: 1px solid rgb(237, 240, 241);

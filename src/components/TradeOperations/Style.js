@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.article`
+  height: 233px;
   padding-top: 40px;
 `;
 

@@ -6,6 +6,10 @@ export const AccountContainer = styled.div`
   width: 298px;
 `;
 
+export const AccountWrapper = styled.div`
+  height: 189px;
+`;
+
 export const AccountInput = styled.div`
   flex: 1 1 150px;
   margin: 5px 0;
@@ -45,14 +49,4 @@ export const SpinnerWrapper = styled.div`
   width: 100%;
   height: 100%;
   padding-top: 30px;
-`;
-
-export const Error = styled.div`
-  width: 400px;
-  text-align: center;
-  margin: 10px auto 10px;
-`;
-
-export const ErrorMessage = styled.p`
-  color: red;
 `;

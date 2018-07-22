@@ -2,28 +2,20 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
   AccountContainer,
+  AccountWrapper,
   AccountInput,
   AccountInteger,
   AccountFloat,
   AccountCurrency,
-  SpinnerWrapper,
-  Error,
-  ErrorMessage
+  SpinnerWrapper
 } from './Style';
 
-import {
-  getCoins,
-  getIsLoading,
-  getWalletError,
-  getIsWalletErrorPresent
-} from '../../ducks/wallet';
+import { getCoins, getIsLoading } from '../../ducks/wallet';
 import Spinner from 'react-svg-spinner';
 
 const mapStateToProps = state => ({
   isLoading: getIsLoading(state),
-  coins: getCoins(state),
-  isError: getIsWalletErrorPresent(state),
-  error: getWalletError(state)
+  coins: getCoins(state)
 });
 
 const currencies = {
@@ -42,7 +34,7 @@ class Account extends Component {
   };
 
   renderWallet = () => {
-    const { coins, error, isError } = this.props;
+    const { coins } = this.props;
     const values = {
       usd: coins.usd ? String(coins.usd).split('.') : 0,
       btc: coins.btc ? String(coins.btc).split('.') : 0,
@@ -52,12 +44,6 @@ class Account extends Component {
     return (
       <Fragment>
         <h2>Ваш счёт</h2>
-        {isError && (
-          <Error>
-            <ErrorMessage>{error}</ErrorMessage>
-          </Error>
-        )}
-
         {Object.keys(currencies).map(element => (
           <AccountContainer key={element}>
             <AccountInput>
@@ -78,7 +64,11 @@ class Account extends Component {
 
   render() {
     const { isLoading } = this.props;
-    return <div>{isLoading ? this.renderSpinner() : this.renderWallet()}</div>;
+    return (
+      <AccountWrapper>
+        {isLoading ? this.renderSpinner() : this.renderWallet()}
+      </AccountWrapper>
+    );
   }
 }
 
