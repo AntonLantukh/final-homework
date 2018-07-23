@@ -38,8 +38,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { loginRequest, registrationRequest };
 
-const Input = ({ input, placeholder }) => {
-  return <StyledInput {...input} placeholder={placeholder} />;
+const Input = ({ input, placeholder, type }) => {
+  return <StyledInput {...input} placeholder={placeholder} type={type} />;
 };
 
 export class Login extends Component {
@@ -97,6 +97,7 @@ export class Login extends Component {
                         name="email"
                         placeholder="email"
                         component={Input}
+                        required
                       />
                     </FieldWrapper>
                     <FieldWrapper>
@@ -106,6 +107,7 @@ export class Login extends Component {
                         name="password"
                         placeholder="password"
                         component={Input}
+                        required
                       />
                     </FieldWrapper>
                     <MainButton type="submit">

@@ -21,16 +21,22 @@ const isAuthorized = handleActions(
 
 const loginError = handleActions(
   {
+    [registrationRequest]: (_state, action) => null,
     [loginRequest]: (_state, action) => null,
-    [loginFailure]: (_state, action) => action.payload
+    [loginFailure]: (_state, action) => action.payload,
+    [loginSuccess]: (_state, action) => null,
+    [registrationSuccess]: (_state, action) => null
   },
   null
 );
 
 const registrationError = handleActions(
   {
+    [loginRequest]: (_state, action) => null,
     [registrationRequest]: (_state, action) => null,
-    [registrationFailure]: (_state, action) => action.payload
+    [registrationFailure]: (_state, action) => action.payload,
+    [loginSuccess]: (_state, action) => null,
+    [registrationSuccess]: (_state, action) => null
   },
   null
 );
