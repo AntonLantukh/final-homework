@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, Fragment } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
 import {
   AccountContainer,
   AccountWrapper,

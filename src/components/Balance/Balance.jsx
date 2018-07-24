@@ -1,5 +1,5 @@
-import React, { PureComponent, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent, Fragment } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
 
 import {
   BalanceTable,
