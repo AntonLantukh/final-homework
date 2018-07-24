@@ -1,5 +1,5 @@
-import React, { PureComponent } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { PlatformWrapper, PlatformOperations } from './Style';
 import Account from '../Account';
 import TradeOperations from '../TradeOperations';

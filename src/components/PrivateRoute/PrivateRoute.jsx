@@ -1,7 +1,7 @@
-import React, { PureComponent } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import { Route, Redirect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
+import React, { PureComponent } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { getIsAuthorized } from '../../ducks/auth';
-import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
+import { connect } from 'react-redux';
 
 class PrivateRoute extends PureComponent {
   render() {

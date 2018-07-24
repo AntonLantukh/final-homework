@@ -1,5 +1,5 @@
-import React, { PureComponent } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import { Link } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import logo from './img/Logo-white.svg';
 import {
   HeaderMain,
@@ -9,7 +9,7 @@ import {
   HeaderCurrencyWrapperActive,
   HeaderLogo
 } from './Style';
-import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
+import { connect } from 'react-redux';
 import {
   getCurrencyBtcLast,
   getCurrencyEthLast,

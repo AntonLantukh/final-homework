@@ -1,7 +1,7 @@
-import React, { PureComponent } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React, { PureComponent } from 'react';
 import { compose, mapProps } from 'recompose';
-import { withRouter } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
-import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   getCurrentCurrencyPurchase,
   getCurrentCurrencySell,

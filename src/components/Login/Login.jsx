@@ -1,6 +1,6 @@
-import React, { Component } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import { Redirect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
-import { connect } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   FormMain,
   FormWrapper,
