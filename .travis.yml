@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - "9"
 
+before_install:
+ - export NODE_PATH=./src"
+
 install:
   - yarn install
 
