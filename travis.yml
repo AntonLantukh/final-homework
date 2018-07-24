@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - "9"
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  -yarn install
+
+script:
+  -yarn build
+   -yarn test
+
+deploy:
+  provider: heroku
+  app: final-homework
+  api_key:
+    secure: $HEROKU_KEY
