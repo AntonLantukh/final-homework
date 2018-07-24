@@ -3,10 +3,10 @@ language: node_js
 node_js:
   - "9"
 
-cache:
-  directories:
-    - ~/.npm
-    - ~/.cache
+# cache:
+#   directories:
+#     - ~/.npm
+#     - ~/.cache
 
 before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
