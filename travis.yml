@@ -12,8 +12,8 @@ install:
   -yarn install
 
 script:
-  -yarn build
-   -yarn test
+  - yarn build
+  - yarn test
 
 deploy:
   provider: heroku
